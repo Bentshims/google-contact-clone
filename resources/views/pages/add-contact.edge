@@ -1,0 +1,248 @@
+@layout.app({title: "Add Contact"})
+  @slot('main')
+    <!-- Header -->
+    <div class="mb-8 flex flex-col items-start">
+      <div class="flex items-center justify-start">
+        <a href="/" class="text-google-blue hover:bg-blue-50 px-4 h-10 w-10 rounded-full flex items-center justify-center">
+          <i class="bi bi-arrow-left"></i>
+        </a>
+      </div>
+      <h1 class="text-2xl font-normal">
+        Créer un contact
+      </h1>
+    </div>
+
+    <div class="max-w-2xl mx-auto p-6">
+
+      <!-- Contact Form -->
+      <form id="contactForm" class="space-y-6" action="/addContact" method="POST" enctype="multipart/form-data">
+        {{ csrfField() }}
+        <!-- Name Section -->
+
+        <div class="relative">
+          <img src="../resources/assets/images/avatar.png" alt="avatar" class="w-40 h-40 rounded-full">
+          <div class="flex items-center mb-4">
+            <input type="file" name="avatar" class="hidden" id="avatarInput">
+            <label for="avatarInput" class="h-12 w-12 bg-blue-300 rounded-full flex items-center justify-center cursor-pointer absolute top-20 left-32 z-10 hover:bg-blue-300">
+              <i class="bi bi-plus"></i>
+            </label>
+            <p class="text-sm text-gray-500 text-center pt-6 pl-8">
+              Ajouter une photo
+            </p>
+          </div>
+        </div>
+        <div>
+
+          <div class="border-b border-gray-200 mb-4 focus-within:border-b-2 focus-within:border-google-blue">
+            <input
+              type="text"
+              id="firstName"
+              placeholder="Prénom"
+              class="w-full py-3 px-0 border-none outline-none text-base bg-transparent"
+              name="firstName"
+              required
+              minlength="3"
+
+            />
+          </div>
+          <div class="border-b border-gray-200 mb-4 focus-within:border-b-2 focus-within:border-google-blue">
+            <input
+              type="text"
+              id="lastName"
+              placeholder="Nom"
+              class="w-full py-3 px-0 border-none outline-none text-base bg-transparent"
+              name="lastName"
+              required
+              minlength="3"
+            />
+          </div>
+          <div class="border-b border-gray-200 mb-4 focus-within:border-b-2 focus-within:border-google-blue">
+            <input
+              type="text"
+              id="company"
+              placeholder="Société"
+              class="w-full py-3 px-0 border-none outline-none text-base bg-transparent"
+              name="company"
+              required
+              minlength="3"
+            />
+          </div>
+          <div class="border-b border-gray-200 mb-4 focus-within:border-b-2 focus-within:border-google-blue">
+            <input
+              type="text"
+              id="jobTitle"
+              placeholder="Poste"
+              class="w-full py-3 px-0 border-none outline-none text-base bg-transparent"
+              name="jobTitle"
+              required
+              minlength="3"
+            />
+          </div>
+        </div>
+
+        <!-- Phone Section -->
+        <div>
+          <div class="text-google-blue text-sm font-medium mb-4">
+            Téléphone
+          </div>
+          <div id="phoneSection">
+            <div class="flex items-center mb-4 phone-field">
+              <select name="phoneType" class="text-gray-500 text-sm mr-4 min-w-20 border-none outline-none bg-transparent">
+                <option value="mobile">
+                  Mobile
+                </option>
+                <option value="home">
+                  Domicile
+                </option>
+                <option value="work">
+                  Travail
+                </option>
+                <option value="fax">
+                  Fax
+                </option>
+                <option value="other">
+                  Autre
+                </option>
+              </select>
+              <div class="border-b border-gray-200 flex-1 focus-within:border-b-2 focus-within:border-google-blue">
+                <input
+                  type="tel"
+                  placeholder="Numéro de téléphone"
+                  class="w-full py-3 px-0 border-none outline-none text-base bg-transparent"
+                  name="phone"
+                  required
+                  minlength="10"
+                  maxlength="10"
+                />
+              </div>
+              <button
+                type="button"
+                class="remove-btn ml-2 hidden text-gray-500 text-lg w-6 h-6 flex items-center justify-center hover:bg-gray-100 rounded-full"
+              >&times;</button>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="text-google-blue text-sm hover:bg-gray-100 px-3 py-1 rounded"
+            onclick="addPhoneField()"
+          >
+            + Ajouter un téléphone
+          </button>
+        </div>
+
+        <!-- Email Section -->
+        <div>
+          <div class="text-google-blue text-sm font-medium mb-4">
+            E-mail
+          </div>
+          <div id="emailSection">
+            <div class="flex items-center mb-4 email-field">
+              <select name="emailType" class="text-gray-500 text-sm mr-4 min-w-20 border-none outline-none bg-transparent">
+                <option value="home">
+                  Domicile
+                </option>
+                <option value="work">
+                  Travail
+                </option>
+                <option value="other">
+                  Autre
+                </option>
+              </select>
+              <div class="border-b border-gray-200 flex-1 focus-within:border-b-2 focus-within:border-google-blue">
+                <input
+                  type="email"
+                  placeholder="Adresse e-mail"
+                  class="w-full py-3 px-0 border-none outline-none text-base bg-transparent"
+                  name="email"
+                  required
+                  minlength="3"
+                  maxlength="255"
+                />
+              </div>
+              <button
+                type="button"
+                class="remove-btn ml-2 hidden text-gray-500 text-lg w-6 h-6 flex items-center justify-center hover:bg-gray-100 rounded-full"
+              >&times;</button>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="text-google-blue text-sm hover:bg-gray-100 px-3 py-1 rounded"
+            onclick="addEmailField()"
+          >
+            + Ajouter un e-mail
+          </button>
+        </div>
+
+        <!-- Address Section -->
+        <div>
+          <div class="text-google-blue text-sm font-medium mb-4">
+            Adresse
+          </div>
+          <div id="addressSection">
+            <div class="address-field mb-4">
+              <div class="flex items-center mb-2">
+                <select name="addressType" class="text-gray-500 text-sm mr-4 min-w-20 border-none outline-none bg-transparent">
+                  <option value="home">
+                    Domicile
+                  </option>
+                  <option value="work">
+                    Travail
+                  </option>
+                  <option value="other">
+                    Autre
+                  </option>
+                </select>
+                <button
+                  type="button"
+                  class="remove-btn ml-auto hidden text-gray-500 text-lg w-6 h-6 flex items-center justify-center hover:bg-gray-100 rounded-full"
+                >&times;</button>
+              </div>
+              <div class="border-b border-gray-200 mb-4 focus-within:border-b-2 focus-within:border-google-blue">
+                <input
+                  type="text"
+                  placeholder="Rue"
+                  class="w-full py-3 px-0 border-none outline-none text-base bg-transparent"
+                  name="address"
+                  required
+                  minlength="3"
+                  maxlength="255"
+                />
+              </div>
+              <div class="border-b border-gray-200 mb-4 focus-within:border-b-2 focus-within:border-google-blue">
+                <input
+                  type="text"
+                  placeholder="Ville"
+                  class="w-full py-3 px-0 border-none outline-none text-base bg-transparent"
+                  name="city"
+                  required
+                  minlength="3"
+                  maxlength="255"
+                />
+              </div>
+              
+              <div class="border-b border-gray-200 mb-4 focus-within:border-b-2 focus-within:border-google-blue">
+                <input
+                  type="text"
+                  placeholder="Pays"
+                  class="w-full py-3 px-0 border-none outline-none text-base bg-transparent"
+                  name="country"
+                  required
+                  minlength="3"
+                  maxlength="255"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="bg-blue-200 text-white px-6 py-2 rounded-xl hover:bg-blue-600 absolute -top-2 right-8"
+        >
+          Enregistrer
+        </button>
+      </form>
+    </div>
+  @endslot
+@end
