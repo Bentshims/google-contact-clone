@@ -8,6 +8,10 @@ export default class Contact extends BaseModel {
   declare id: number
 
   @column()
+  declare userId: number
+  
+
+  @column()
   declare firstName: string
 
   @column()
@@ -47,6 +51,7 @@ export default class Contact extends BaseModel {
   declare addressTypes: string[]
 
   @column()
+
   @belongsTo(() => User)
   declare user: BelongsTo<typeof User>
 
