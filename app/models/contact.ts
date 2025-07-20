@@ -18,31 +18,31 @@ export default class Contact extends BaseModel {
   declare jobTitle: string
 
   @column()
-  declare phone: string
+  declare phones: string[]
 
   @column()
-  declare email: string
+  declare emails: string[]
 
   @column()
-  declare address: string
+  declare addresses: string[]
 
   @column()
-  declare city: string
+  declare cities: string[]
 
   @column()
-  declare country: string
+  declare countries: string[]
 
   @column()
   declare avatar: string
 
   @column()
-  declare phoneType: string
+  declare phoneTypes: string[]
 
   @column()
-  declare emailType: string
+  declare emailTypes: string[]
 
   @column()
-  declare addressType: string
+  declare addressTypes: string[]
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

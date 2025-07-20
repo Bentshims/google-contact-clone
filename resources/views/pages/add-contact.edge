@@ -87,7 +87,7 @@
           </div>
           <div id="phoneSection">
             <div class="flex items-center mb-4 phone-field">
-              <select name="phoneType" class="text-gray-500 text-sm mr-4 min-w-20 border-none outline-none bg-transparent">
+              <select name="phoneTypes[]" class="text-gray-500 text-sm mr-4 min-w-20 border-none outline-none bg-transparent">
                 <option value="mobile">
                   Mobile
                 </option>
@@ -109,7 +109,7 @@
                   type="tel"
                   placeholder="Numéro de téléphone"
                   class="w-full py-3 px-0 border-none outline-none text-base bg-transparent"
-                  name="phone"
+                  name="phones[]"
                   required
                   minlength="10"
                   maxlength="10"
@@ -137,7 +137,7 @@
           </div>
           <div id="emailSection">
             <div class="flex items-center mb-4 email-field">
-              <select name="emailType" class="text-gray-500 text-sm mr-4 min-w-20 border-none outline-none bg-transparent">
+              <select name="emailTypes[]" class="text-gray-500 text-sm mr-4 min-w-20 border-none outline-none bg-transparent">
                 <option value="home">
                   Domicile
                 </option>
@@ -153,7 +153,7 @@
                   type="email"
                   placeholder="Adresse e-mail"
                   class="w-full py-3 px-0 border-none outline-none text-base bg-transparent"
-                  name="email"
+                  name="emails[]"
                   required
                   minlength="3"
                   maxlength="255"
@@ -182,7 +182,7 @@
           <div id="addressSection">
             <div class="address-field mb-4">
               <div class="flex items-center mb-2">
-                <select name="addressType" class="text-gray-500 text-sm mr-4 min-w-20 border-none outline-none bg-transparent">
+                <select name="addressTypes[]" class="text-gray-500 text-sm mr-4 min-w-20 border-none outline-none bg-transparent">
                   <option value="home">
                     Domicile
                   </option>
@@ -203,7 +203,7 @@
                   type="text"
                   placeholder="Rue"
                   class="w-full py-3 px-0 border-none outline-none text-base bg-transparent"
-                  name="address"
+                  name="addresses[]"
                   required
                   minlength="3"
                   maxlength="255"
