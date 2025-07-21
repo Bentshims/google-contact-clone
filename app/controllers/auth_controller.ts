@@ -4,6 +4,15 @@ import { loginValidator, signupValidator } from '../validators/auth.js'
 
 
 export default class AuthController {
+
+    public async showLogin({ view }: HttpContext) {
+        return view.render('pages/security/login')
+    }
+
+    public async showSignup({ view }: HttpContext) {
+        return view.render('pages/security/signup')
+    }
+    
     public async login({ request, response, auth }: HttpContext) {
         const { email, password } = await request.validateUsing(loginValidator)
         //  * Step 2: Verify credentials
