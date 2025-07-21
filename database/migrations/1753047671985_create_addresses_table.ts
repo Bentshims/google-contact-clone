@@ -14,8 +14,10 @@ export default class extends BaseSchema {
         .inTable('contacts')
         .onDelete('CASCADE')
 
-      table.string('number', 20).notNullable()
-      table.enum('type', ['mobile', 'home', 'work', 'fax', 'other']).notNullable()
+      table.enum('address_type', ['home', 'work', 'other']).notNullable()
+      table.string('addresses', 255).notNullable()
+      table.string('city', 255).notNullable()
+      table.string('country', 255).notNullable()
 
       table.timestamps(true, true)
     })
