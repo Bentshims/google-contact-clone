@@ -1,4 +1,4 @@
-import { BaseSchema } from '@adonisjs/lucid/schema'
+import { BaseSchema } from "@adonisjs/lucid/schema"
 
 export default class extends BaseSchema {
   protected tableName = 'addresses'
@@ -6,9 +6,18 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
+      table
+        .integer('contact_id')
+        .unsigned()
+        .notNullable()
+        .references('id')
+        .inTable('contacts')
+        .onDelete('CASCADE')
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.string('number', 20).notNullable()
+      table.enum('type', ['mobile', 'home', 'work', 'fax', 'other']).notNullable()
+
+      table.timestamps(true, true)
     })
   }
 
