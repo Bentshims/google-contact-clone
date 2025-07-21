@@ -29,11 +29,9 @@ export default class Contact extends BaseModel {
   @column()
   declare avatar: string
 
-  // ✅ Relation avec User
   @belongsTo(() => User)
   declare user: BelongsTo<typeof User>
 
-  // ✅ Relations avec les sous-modèles
   @hasMany(() => Phone)
   declare phones: HasMany<typeof Phone>
 

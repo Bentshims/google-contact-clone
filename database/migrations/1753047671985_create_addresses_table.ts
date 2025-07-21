@@ -15,7 +15,7 @@ export default class extends BaseSchema {
         .onDelete('CASCADE')
 
       table.enum('address_type', ['home', 'work', 'other']).notNullable()
-      table.string('addresses', 255).notNullable()
+      table.string('address', 255).notNullable()
       table.string('city', 255).notNullable()
       table.string('country', 255).notNullable()
 

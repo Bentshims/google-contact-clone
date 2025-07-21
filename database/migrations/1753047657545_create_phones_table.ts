@@ -15,7 +15,7 @@ export default class extends BaseSchema {
         .onDelete('CASCADE')
 
       table.string('phone_number', 20).notNullable()
-      table.enum('phone_types', ['mobile', 'home', 'work', 'fax', 'other']).notNullable()
+      table.enum('phone_type', ['mobile', 'home', 'work', 'fax', 'other']).notNullable()
 
       table.timestamps(true, true)
     })
@@ -25,3 +25,4 @@ export default class extends BaseSchema {
     this.schema.dropTable(this.tableName)
   }
 }
+
