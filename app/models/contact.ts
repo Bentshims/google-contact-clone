@@ -1,7 +1,11 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
+import { BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm'
 import User from './user.js'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import Phone from './phone.js'
+import Email from './email.js'
+import Address from './address.js'
+
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 
 export default class Contact extends BaseModel {
   @column({ isPrimary: true })
@@ -9,7 +13,6 @@ export default class Contact extends BaseModel {
 
   @column()
   declare userId: number
-  
 
   @column()
   declare firstName: string
@@ -24,36 +27,21 @@ export default class Contact extends BaseModel {
   declare jobTitle: string
 
   @column()
-  declare phones: string[]
-
-  @column()
-  declare emails: string[]
-
-  @column()
-  declare addresses: string[]
-
-  @column()
-  declare cities: string[]
-
-  @column()
-  declare countries: string[]
-
-  @column()
   declare avatar: string
 
-  @column()
-  declare phoneTypes: string[]
-
-  @column()
-  declare emailTypes: string[]
-
-  @column()
-  declare addressTypes: string[]
-
-  @column()
-
+  // ✅ Relation avec User
   @belongsTo(() => User)
   declare user: BelongsTo<typeof User>
+
+  // ✅ Relations avec les sous-modèles
+  @hasMany(() => Phone)
+  declare phones: HasMany<typeof Phone>
+
+  @hasMany(() => Email)
+  declare emails: HasMany<typeof Email>
+
+  @hasMany(() => Address)
+  declare addresses: HasMany<typeof Address>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
