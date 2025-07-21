@@ -12,6 +12,8 @@ import { middleware } from './kernel.js'
 
 router.get('/login', '#controllers/auth_controller.showLogin')
 router.post('/login', '#controllers/auth_controller.login')
+router.get('/signup', '#controllers/auth_controller.showSignup')
+router.post('/signup', '#controllers/auth_controller.signup')
 
 router.group(() => {
     router.get('/','#controllers/users_controller.index').as('home')
